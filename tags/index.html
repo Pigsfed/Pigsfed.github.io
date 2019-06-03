@@ -20,7 +20,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://pigsfed.top"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
 
 
 
@@ -99,9 +112,9 @@
   <meta property="og:type" content="website">
 <meta property="og:title" content="标签">
 <meta property="og:url" content="http://Pigsfed.github.io/tags/index.html">
-<meta property="og:site_name" content="Pigsfed&#39;s Blog">
+<meta property="og:site_name" content="Pigsfed Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-03T08:16:44.279Z">
+<meta property="og:updated_time" content="2019-06-03T12:08:22.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="标签">
 
@@ -121,7 +134,7 @@
   };
 </script>
 
-  <title>标签 | Pigsfed's Blog</title>
+  <title>标签 | Pigsfed Blog</title>
   
 
 
@@ -180,7 +193,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Pigsfed's Blog</span>
+        <span class="site-title">Pigsfed Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -452,9 +465,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/touxiang.png" alt="Pigsfed">
+              <img class="site-author-image" itemprop="image" src="/images/touxiang.png" alt="喂不饱的猪">
             
-              <p class="site-author-name" itemprop="name">Pigsfed</p>
+              <p class="site-author-name" itemprop="name">喂不饱的猪</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
@@ -465,7 +478,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -505,7 +518,7 @@
             <div class="links-of-blogroll motion-element links-of-blogroll-inline">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                其他链接
+                个人推荐
               </div>
               <ul class="links-of-blogroll-list">
                 
@@ -540,8 +553,7 @@
           
             
           
-          
-
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=35288984&auto=1&height=66"></iframe>
         </div>
       </div>
 
@@ -562,18 +574,16 @@
       <div class="footer-inner">
         <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共73字</span>
+  <span class="post-count">博客全站共88字</span>
 </div>
 <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Pigsfed</span>
+  <span class="author" itemprop="copyrightHolder">喂不饱的猪</span>
 
-  <!--
-  -->
+  
 
-  <!---->
   
 </div>
 
@@ -634,6 +644,8 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
@@ -675,6 +687,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -691,6 +706,12 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
 
 
   
@@ -769,5 +790,5 @@
 
   
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":75,"height":100},"mobile":{"show":true},"log":false});</script></body>
 </html>

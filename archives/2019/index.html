@@ -20,7 +20,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://pigsfed.top"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
 
 
 
@@ -97,12 +110,12 @@
 
 
   <meta property="og:type" content="website">
-<meta property="og:title" content="Pigsfed&#39;s Blog">
+<meta property="og:title" content="Pigsfed Blog">
 <meta property="og:url" content="http://Pigsfed.github.io/archives/2019/index.html">
-<meta property="og:site_name" content="Pigsfed&#39;s Blog">
+<meta property="og:site_name" content="Pigsfed Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pigsfed&#39;s Blog">
+<meta name="twitter:title" content="Pigsfed Blog">
 
 
 
@@ -120,7 +133,7 @@
   };
 </script>
 
-  <title>归档 | Pigsfed's Blog</title>
+  <title>归档 | Pigsfed Blog</title>
   
 
 
@@ -179,7 +192,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Pigsfed's Blog</span>
+        <span class="site-title">Pigsfed Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -380,7 +393,7 @@
         
           
         
-        嗯..! 目前共计 1 篇日志。 继续努力。
+        嗯..! 目前共计 2 篇日志。 继续努力。
       </span>
       
 
@@ -395,6 +408,41 @@
           <div class="collection-title">
             <h2 class="archive-year" id="archive-year-2019">2019</h2>
           </div>
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+          <a class="post-title-link" href="/2019/06/03/网站创建/" itemprop="url">
+            
+              <span itemprop="name">网站创建</span>
+            
+          </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-06-03T20:09:29+08:00" content="2019-06-03">
+          06-03
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
         
         
 
@@ -462,9 +510,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/touxiang.png" alt="Pigsfed">
+              <img class="site-author-image" itemprop="image" src="/images/touxiang.png" alt="喂不饱的猪">
             
-              <p class="site-author-name" itemprop="name">Pigsfed</p>
+              <p class="site-author-name" itemprop="name">喂不饱的猪</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
@@ -475,7 +523,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -515,7 +563,7 @@
             <div class="links-of-blogroll motion-element links-of-blogroll-inline">
               <div class="links-of-blogroll-title">
                 <i class="fa  fa-fw fa-link"></i>
-                其他链接
+                个人推荐
               </div>
               <ul class="links-of-blogroll-list">
                 
@@ -550,8 +598,7 @@
           
             
           
-          
-
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=35288984&auto=1&height=66"></iframe>
         </div>
       </div>
 
@@ -572,18 +619,16 @@
       <div class="footer-inner">
         <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共73字</span>
+  <span class="post-count">博客全站共88字</span>
 </div>
 <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Pigsfed</span>
+  <span class="author" itemprop="copyrightHolder">喂不饱的猪</span>
 
-  <!--
-  -->
+  
 
-  <!---->
   
 </div>
 
@@ -644,6 +689,8 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
@@ -685,6 +732,9 @@
 
 
 
+  
+  
+
 
 
 
@@ -701,6 +751,12 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
 
 
   
@@ -773,5 +829,5 @@
 
   
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":75,"height":100},"mobile":{"show":true},"log":false});</script></body>
 </html>
