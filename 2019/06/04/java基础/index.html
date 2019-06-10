@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<script>
+    (function () {
+        if ('') {
+            if (prompt('请输入文章密码') !== '') {
+                alert('密码错误！');
+                if (history.length === 1) {
+                    location.replace("https://pigsfed.top"); // 这里替换成你的首页
+                } else {
+                    history.back();
+                }
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="TOMCATtomcat结构 目录     1tomcat的目录如图所示，主要包含bin、conf、lib、logs、webapps、work  12345bin目录可以启动或关闭tomcat启动脚本startup.sh(linux)或startup.bat（windows）、使用catalina.sh也可以启动tomcat关闭脚本shutdown.sh或shutdown.bat、catalina">
+<meta name="keywords" content="tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javaweb基础-tomcat">
+<meta property="og:url" content="http://Pigsfed.github.io/2019/06/04/java基础/index.html">
+<meta property="og:site_name" content="Pigsfed Blog">
+<meta property="og:description" content="TOMCATtomcat结构 目录     1tomcat的目录如图所示，主要包含bin、conf、lib、logs、webapps、work  12345bin目录可以启动或关闭tomcat启动脚本startup.sh(linux)或startup.bat（windows）、使用catalina.sh也可以启动tomcat关闭脚本shutdown.sh或shutdown.bat、catalina">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://pigsfed.github.io/images/tomcat_project.JPG">
+<meta property="og:image" content="http://pigsfed.github.io/images/BootstrapMain.png">
+<meta property="og:image" content="http://pigsfed.github.io/images/Bootstrap.png">
+<meta property="og:image" content="http://pigsfed.github.io/images/tomcat_project.png">
+<meta property="og:image" content="http://pigsfed.github.io/images/TomcatProcess.png">
+<meta property="og:updated_time" content="2019-06-10T09:51:14.087Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javaweb基础-tomcat">
+<meta name="twitter:description" content="TOMCATtomcat结构 目录     1tomcat的目录如图所示，主要包含bin、conf、lib、logs、webapps、work  12345bin目录可以启动或关闭tomcat启动脚本startup.sh(linux)或startup.bat（windows）、使用catalina.sh也可以启动tomcat关闭脚本shutdown.sh或shutdown.bat、catalina">
+<meta name="twitter:image" content="http://pigsfed.github.io/images/tomcat_project.JPG">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://Pigsfed.github.io/2019/06/04/java基础/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>javaweb基础-tomcat | Pigsfed Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+		<a href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Pigsfed Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">记录工作和生活的琐事</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-首页">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Pigsfed.github.io/2019/06/04/java基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="喂不饱的猪">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pigsfed Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">javaweb基础-tomcat
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-04 08:43:00" itemprop="dateCreated datePublished" datetime="2019-06-04T08:43:00+08:00">2019-06-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-10 17:51:14" itemprop="dateModified" datetime="2019-06-10T17:51:14+08:00">2019-06-10</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javaweb基础/" itemprop="url" rel="index"><span itemprop="name">javaweb基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="TOMCAT"><a href="#TOMCAT" class="headerlink" title="TOMCAT"></a>TOMCAT</h1><h2 id="tomcat结构"><a href="#tomcat结构" class="headerlink" title="tomcat结构"></a>tomcat结构</h2><ul>
+<li><strong>目录</strong> <img src="/images/tomcat_project.JPG">
+
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tomcat的目录如图所示，主要包含bin、conf、lib、logs、webapps、work</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bin目录可以启动或关闭tomcat</span><br><span class="line">启动脚本startup.sh(linux)或startup.bat（windows）、使用catalina.sh也可以启动tomcat</span><br><span class="line">关闭脚本shutdown.sh或shutdown.bat、catalina.sh同样可以</span><br><span class="line">catalina.sh也可以启动而且startup.sh就是调用它</span><br><span class="line">bootstrap.jar是启动其中的main方法</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conf目录主要是一些配置文件，其中需要注意的是server.xml、它也反映了tomcat的运行步骤</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lib中存放使用tomcat时需要的jar</span><br><span class="line">包括注解、catalina、jsp、servlet、数据库连接、国际化、JNI以及网络连接</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logs存放的书tomcat运行时的日志、包括catalina.log、host-manager.log、localhost.log、manager.log</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webapps下面放的是启动的项目</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">work放的是编译后的class文件</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>startup.sh</strong></li>
+</ul>
+<div style="margin-top: -20px;"><div class="fold_hider"><div class="close hider_title"><span style="color:gray;font-size:12px">显/隐内容</span></div></div><div class="fold">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Licensed to the Apache Software Foundation (ASF) under one or more</span></span><br><span class="line"><span class="comment"># contributor license agreements.  See the NOTICE file distributed with</span></span><br><span class="line"><span class="comment"># this work for additional information regarding copyright ownership.</span></span><br><span class="line"><span class="comment"># The ASF licenses this file to You under the Apache License, Version 2.0</span></span><br><span class="line"><span class="comment"># (the "License"); you may not use this file except in compliance with</span></span><br><span class="line"><span class="comment"># the License.  You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#     http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment"># distributed under the License is distributed on an "AS IS" BASIS,</span></span><br><span class="line"><span class="comment"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment"># See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment"># limitations under the License.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -----------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Start Script for the CATALINA Server</span></span><br><span class="line"><span class="comment"># -----------------------------------------------------------------------------</span></span><br><span class="line">os400=<span class="literal">false</span></span><br><span class="line"><span class="keyword">case</span> <span class="string">"`uname`"</span> <span class="keyword">in</span></span><br><span class="line">OS400*) os400=<span class="literal">true</span>;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># resolve links - $0 may be a softlink</span></span><br><span class="line">PRG=<span class="string">"<span class="variable">$0</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ -h <span class="string">"<span class="variable">$PRG</span>"</span> ] ; <span class="keyword">do</span></span><br><span class="line">  ls=`ls -ld <span class="string">"<span class="variable">$PRG</span>"</span>`</span><br><span class="line">  link=`expr <span class="string">"<span class="variable">$ls</span>"</span> : <span class="string">'.*-&gt; \(.*\)$'</span>`</span><br><span class="line">  <span class="keyword">if</span> expr <span class="string">"<span class="variable">$link</span>"</span> : <span class="string">'/.*'</span> &gt; /dev/null; <span class="keyword">then</span></span><br><span class="line">    PRG=<span class="string">"<span class="variable">$link</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    PRG=`dirname <span class="string">"<span class="variable">$PRG</span>"</span>`/<span class="string">"<span class="variable">$link</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">PRGDIR=`dirname <span class="string">"<span class="variable">$PRG</span>"</span>`</span><br><span class="line">EXECUTABLE=catalina.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># Check that target executable exists</span></span><br><span class="line"><span class="keyword">if</span> <span class="variable">$os400</span>; <span class="keyword">then</span></span><br><span class="line">  <span class="comment"># -x will Only work on the os400 if the files are:</span></span><br><span class="line">  <span class="comment"># 1. owned by the user</span></span><br><span class="line">  <span class="comment"># 2. owned by the PRIMARY group of the user</span></span><br><span class="line">  <span class="comment"># this will not work if the user belongs in secondary groups</span></span><br><span class="line">  <span class="built_in">eval</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="keyword">if</span> [ ! -x <span class="string">"<span class="variable">$PRGDIR</span>"</span>/<span class="string">"<span class="variable">$EXECUTABLE</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Cannot find <span class="variable">$PRGDIR</span>/<span class="variable">$EXECUTABLE</span>"</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"The file is absent or does not have execute permission"</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"This file is needed to run this program"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$PRGDIR</span>"</span>/<span class="string">"<span class="variable">$EXECUTABLE</span>"</span> start <span class="string">"<span class="variable">$@</span>"</span></span><br></pre></td></tr></table></figure>
+
+</div><div class="fold_hider"><div class="close hider_title"><span style="color:gray;font-size:12px">显/隐内容</span></div></div></div>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EXECUTABLE=catalina.sh</span><br><span class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$PRGDIR</span>"</span>/<span class="string">"<span class="variable">$EXECUTABLE</span>"</span> start <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">代码中执行的就是catalina.sh</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>catalina.sh</strong></li>
+</ul>
+<div style="margin-top: -20px;"><div class="fold_hider"><div class="close hider_title"><span style="color:gray;font-size:12px">显/隐内容</span></div></div><div class="fold">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment"># =============================================================</span></span><br><span class="line"><span class="comment"># 该脚本设置正确的环境变量和系统信息，然后启动或者停止tomcat server</span></span><br><span class="line"><span class="comment"># 具体的操作是：</span></span><br><span class="line"><span class="comment"># 使用命令行参数作为args的实参，调用org.apache.catalina.startup.Bootstrap.main(String[])</span></span><br><span class="line"><span class="comment"># ==============================================================</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># -----------------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Start/Stop Script for the CATALINA Server</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Environment Variable Prequisites</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   CATALINA_HOME   May point at your Catalina "build" directory.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   CATALINA_BASE   (Optional) Base directory for resolving dynamic portions</span></span><br><span class="line"><span class="comment">#                   of a Catalina installation.  If not present, resolves to</span></span><br><span class="line"><span class="comment">#                   the same directory that CATALINA_HOME points to.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   CATALINA_OPTS   (Optional) Java runtime options used when the "start",</span></span><br><span class="line"><span class="comment">#                   "stop", or "run" command is executed.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   CATALINA_TMPDIR (Optional) Directory path location of temporary directory</span></span><br><span class="line"><span class="comment">#                   the JVM should use (java.io.tmpdir).  Defaults to</span></span><br><span class="line"><span class="comment">#                   $CATALINA_BASE/temp.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   JAVA_HOME       Must point at your Java Development Kit installation.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   JAVA_OPTS       (Optional) Java runtime options used when the "start",</span></span><br><span class="line"><span class="comment">#                   "stop", or "run" command is executed.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   JPDA_TRANSPORT  (Optional) JPDA transport used when the "jpda start"</span></span><br><span class="line"><span class="comment">#                   command is executed. The default is "dt_socket".</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   JPDA_ADDRESS    (Optional) Java runtime options used when the "jpda start"</span></span><br><span class="line"><span class="comment">#                   command is executed. The default is 8000.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   JSSE_HOME       (Optional) May point at your Java Secure Sockets Extension</span></span><br><span class="line"><span class="comment">#                   (JSSE) installation, whose JAR files will be added to the</span></span><br><span class="line"><span class="comment">#                   system class path used to start Tomcat.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   CATALINA_PID    (Optional) Path of the file which should contains the pid</span></span><br><span class="line"><span class="comment">#                   of catalina startup java process, when start (fork) is used</span></span><br><span class="line"><span class="comment"># -----------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># OS specific support.  $var _must_ be set to either true or false.</span></span><br><span class="line"></span><br><span class="line">cygwin=<span class="literal">false</span></span><br><span class="line"><span class="keyword">case</span> <span class="string">"`uname`"</span> <span class="keyword">in</span></span><br><span class="line">CYGWIN*) cygwin=<span class="literal">true</span>;;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># PRG是被执行的脚本的名称，可以认为PRG=="catalina.sh"，也可能是某个符号链，指向该脚本。</span></span><br><span class="line"></span><br><span class="line">PRG=<span class="string">"<span class="variable">$0</span>"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 处理了一下PRG，等循环跳出之后PRG成为 ????</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> [ -h <span class="string">"<span class="variable">$PRG</span>"</span> ]; <span class="keyword">do</span></span><br><span class="line">  ls=`ls -ld <span class="string">"<span class="variable">$PRG</span>"</span>`</span><br><span class="line">  link=`expr <span class="string">"<span class="variable">$ls</span>"</span> : <span class="string">'.*-&gt; \(.*\)$'</span>`</span><br><span class="line">  <span class="keyword">if</span> expr <span class="string">"<span class="variable">$link</span>"</span> : <span class="string">'.*/.*'</span> &gt; /dev/null; <span class="keyword">then</span></span><br><span class="line">    PRG=<span class="string">"<span class="variable">$link</span>"</span></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    PRG=`dirname <span class="string">"<span class="variable">$PRG</span>"</span>`/<span class="string">"<span class="variable">$link</span>"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># PRGDIR是PRG的目录路径名称</span></span><br><span class="line"></span><br><span class="line">PRGDIR=`dirname <span class="string">"<span class="variable">$PRG</span>"</span>`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行$CATALINA_HOME/BIN/setenv.sh来设置环境变量</span></span><br><span class="line"><span class="comment"># [ -r filename ] 是判断是否文件存在且可读</span></span><br><span class="line"></span><br><span class="line">CATALINA_HOME=`<span class="built_in">cd</span> <span class="string">"<span class="variable">$PRGDIR</span>/.."</span> ; <span class="built_in">pwd</span>`</span><br><span class="line"><span class="keyword">if</span> [ -r <span class="string">"<span class="variable">$CATALINA_HOME</span>"</span>/bin/setenv.sh ]; <span class="keyword">then</span></span><br><span class="line">  . <span class="string">"<span class="variable">$CATALINA_HOME</span>"</span>/bin/setenv.sh</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># For Cygwin, 确保所有的路径名都符合UNIX格式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="variable">$cygwin</span>; <span class="keyword">then</span></span><br><span class="line">  [ -n <span class="string">"<span class="variable">$JAVA_HOME</span>"</span> ] &amp;&amp; JAVA_HOME=`cygpath --unix <span class="string">"<span class="variable">$JAVA_HOME</span>"</span>`</span><br><span class="line">  [ -n <span class="string">"<span class="variable">$CATALINA_HOME</span>"</span> ] &amp;&amp; CATALINA_HOME=`cygpath --unix <span class="string">"<span class="variable">$CATALINA_HOME</span>"</span>`</span><br><span class="line">  [ -n <span class="string">"<span class="variable">$CATALINA_BASE</span>"</span> ] &amp;&amp; CATALINA_BASE=`cygpath --unix <span class="string">"<span class="variable">$CATALINA_BASE</span>"</span>`</span><br><span class="line">  [ -n <span class="string">"<span class="variable">$CLASSPATH</span>"</span> ] &amp;&amp; CLASSPATH=`cygpath --path --unix <span class="string">"<span class="variable">$CLASSPATH</span>"</span>`</span><br><span class="line">  [ -n <span class="string">"<span class="variable">$JSSE_HOME</span>"</span> ] &amp;&amp; JSSE_HOME=`cygpath --path --unix <span class="string">"<span class="variable">$JSSE_HOME</span>"</span>`</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置用来初始化SystemClassLoader的CLASSPATH变量：通过执行脚本setclasspath.sh完成</span></span><br><span class="line"><span class="comment"># 注意：脚本setclasspath.sh改变了原来的$CLASSPATH变量，而把它设为：</span></span><br><span class="line"><span class="comment"># CLASSPATH=$CATALINA_HOME/bin/bootstrap.jar:$JAVA_HOME/lib/tools.jar</span></span><br><span class="line"><span class="comment"># 其中bootstrap.jar是package org.apache.catalina.startup的打包文件，</span></span><br><span class="line"><span class="comment"># 含有启动方法org.apache.catalina.startup.Bootstrap.main(String[] args)</span></span><br><span class="line"><span class="comment"># tools.jar含有javac编译器，用来把jsp文件编译成为servlet class</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -r <span class="string">"<span class="variable">$CATALINA_HOME</span>"</span>/bin/setclasspath.sh ]; <span class="keyword">then</span></span><br><span class="line">  BASEDIR=<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span></span><br><span class="line">  . <span class="string">"<span class="variable">$CATALINA_HOME</span>"</span>/bin/setclasspath.sh</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Cannot find <span class="variable">$CATALINA_HOME</span>/bin/setclasspath.sh"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"This file is needed to run this program"</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 在CLASSPATH环境变量后面补上一些JAR文件</span></span><br><span class="line"><span class="comment"># [ -n string ] 判断字符串是否长度非0；[ -z string ] 判断字符串是否长度为0</span></span><br><span class="line"><span class="comment"># 它们可以用来判断是否某个环境变量已经被设置</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$JSSE_HOME</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">  CLASSPATH=<span class="string">"<span class="variable">$CLASSPATH</span>"</span>:<span class="string">"<span class="variable">$JSSE_HOME</span>"</span>/lib/jcert.jar:<span class="string">"<span class="variable">$JSSE_HOME</span>"</span>/lib/jnet.jar:<span class="string">"<span class="variable">$JSSE_HOME</span>"</span>/lib/jsse.jar</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">CLASSPATH=<span class="string">"<span class="variable">$CLASSPATH</span>"</span>:<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span>/bin/bootstrap.jar</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定CATALINA_BASE变量</span></span><br><span class="line"><span class="comment"># 如果CATALINA_BASE没有值，就让CATALINA_BASE=$CATALINA_HOME</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$CATALINA_BASE</span>"</span> ] ; <span class="keyword">then</span></span><br><span class="line">  CATALINA_BASE=<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定CATALINA_TMPDIR变量</span></span><br><span class="line"><span class="comment"># 如果CATALINA_TMPDIR没有值，就让CATALINA_TMPDIR=$CATALINA_BASE/temp</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$CATALINA_TMPDIR</span>"</span> ] ; <span class="keyword">then</span></span><br><span class="line">  <span class="comment"># Define the java.io.tmpdir to use for Catalina</span></span><br><span class="line">  CATALINA_TMPDIR=<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span>/temp</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># For Cygwin, 在执行java程序前把路径名转换成WINDOWS格式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="variable">$cygwin</span>; <span class="keyword">then</span></span><br><span class="line">  JAVA_HOME=`cygpath --path --windows <span class="string">"<span class="variable">$JAVA_HOME</span>"</span>`</span><br><span class="line">  CATALINA_HOME=`cygpath --path --windows <span class="string">"<span class="variable">$CATALINA_HOME</span>"</span>`</span><br><span class="line">  CATALINA_BASE=`cygpath --path --windows <span class="string">"<span class="variable">$CATALINA_BASE</span>"</span>`</span><br><span class="line">  CATALINA_TMPDIR=`cygpath --path --windows <span class="string">"<span class="variable">$CATALINA_TMPDIR</span>"</span>`</span><br><span class="line">  CLASSPATH=`cygpath --path --windows <span class="string">"<span class="variable">$CLASSPATH</span>"</span>`</span><br><span class="line">  JSSE_HOME=`cygpath --path --windows <span class="string">"<span class="variable">$JSSE_HOME</span>"</span>`</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示信息，然后执行命令</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Using CATALINA_BASE:   <span class="variable">$CATALINA_BASE</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Using CATALINA_HOME:   <span class="variable">$CATALINA_HOME</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Using CATALINA_TMPDIR: <span class="variable">$CATALINA_TMPDIR</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Using JAVA_HOME:       <span class="variable">$JAVA_HOME</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ......当执行catalina.sh的参数是jpda的时候......</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">"jpda"</span> ] ; <span class="keyword">then</span></span><br><span class="line">  <span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$JPDA_TRANSPORT</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    JPDA_TRANSPORT=<span class="string">"dt_socket"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$JPDA_ADDRESS</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    JPDA_ADDRESS=<span class="string">"8000"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$JPDA_OPTS</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">    JPDA_OPTS=<span class="string">"-Xdebug -Xrunjdwp:transport=<span class="variable">$JPDA_TRANSPORT</span>,address=<span class="variable">$JPDA_ADDRESS</span>,server=y,suspend=n"</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line">  CATALINA_OPTS=<span class="string">"<span class="variable">$CATALINA_OPTS</span> <span class="variable">$JPDA_OPTS</span>"</span></span><br><span class="line">  <span class="built_in">shift</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># ......当执行catalina.sh的参数是debug的时候......</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">"debug"</span> ] ; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">shift</span></span><br><span class="line">  <span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">"-security"</span> ] ; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Using Security Manager"</span></span><br><span class="line">    <span class="built_in">shift</span></span><br><span class="line">    <span class="built_in">exec</span> <span class="string">"<span class="variable">$_RUNJDB</span>"</span> <span class="variable">$JAVA_OPTS</span> <span class="variable">$CATALINA_OPTS</span> \</span><br><span class="line">      -Djava.endorsed.dirs=<span class="string">"<span class="variable">$JAVA_ENDORSED_DIRS</span>"</span> -classpath <span class="string">"<span class="variable">$CLASSPATH</span>"</span> \</span><br><span class="line">      -sourcepath <span class="string">"<span class="variable">$CATALINA_HOME</span>"</span>/../../jakarta-tomcat-4.0/catalina/src/share \</span><br><span class="line">      -Djava.security.manager \</span><br><span class="line">      -Djava.security.policy==<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span>/conf/catalina.policy \</span><br><span class="line">      -Dcatalina.base=<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span> \</span><br><span class="line">      -Dcatalina.home=<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span> \</span><br><span class="line">      -Djava.io.tmpdir=<span class="string">"<span class="variable">$CATALINA_TMPDIR</span>"</span> \</span><br><span class="line">      org.apache.catalina.startup.Bootstrap <span class="string">"<span class="variable">$@</span>"</span> start</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">exec</span> <span class="string">"<span class="variable">$_RUNJDB</span>"</span> <span class="variable">$JAVA_OPTS</span> <span class="variable">$CATALINA_OPTS</span> \</span><br><span class="line">      -Djava.endorsed.dirs=<span class="string">"<span class="variable">$JAVA_ENDORSED_DIRS</span>"</span> -classpath <span class="string">"<span class="variable">$CLASSPATH</span>"</span> \</span><br><span class="line">      -sourcepath <span class="string">"<span class="variable">$CATALINA_HOME</span>"</span>/../../jakarta-tomcat-4.0/catalina/src/share \</span><br><span class="line">      -Dcatalina.base=<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span> \</span><br><span class="line">      -Dcatalina.home=<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span> \</span><br><span class="line">      -Djava.io.tmpdir=<span class="string">"<span class="variable">$CATALINA_TMPDIR</span>"</span> \</span><br><span class="line">      org.apache.catalina.startup.Bootstrap <span class="string">"<span class="variable">$@</span>"</span> start</span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># ......当执行catalina.sh的参数是embedded的时候......</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">"embedded"</span> ] ; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">shift</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Embedded Classpath: <span class="variable">$CLASSPATH</span>"</span></span><br><span class="line">  <span class="built_in">exec</span> <span class="string">"<span class="variable">$_RUNJAVA</span>"</span> <span class="variable">$JAVA_OPTS</span> <span class="variable">$CATALINA_OPTS</span> \</span><br><span class="line">    -Djava.endorsed.dirs=<span class="string">"<span class="variable">$JAVA_ENDORSED_DIRS</span>"</span> -classpath <span class="string">"<span class="variable">$CLASSPATH</span>"</span> \</span><br><span class="line">    -Dcatalina.base=<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span> \</span><br><span class="line">    -Dcatalina.home=<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span> \</span><br><span class="line">    -Djava.io.tmpdir=<span class="string">"<span class="variable">$CATALINA_TMPDIR</span>"</span> \</span><br><span class="line">    org.apache.catalina.startup.Embedded <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># +----------------------------------------------------+</span></span><br><span class="line"><span class="comment"># |  ......当执行catalina.sh的参数是run的时候......    |</span></span><br><span class="line"><span class="comment"># |  在当前窗口中启动tomcat服务器！！！                |</span></span><br><span class="line"><span class="comment"># +----------------------------------------------------+</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">"run"</span> ]; <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 把参数run去掉</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">shift</span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  <span class="comment"># 如果参数是run -security，则启动Security Manager</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">"-security"</span> ] ; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Using Security Manager"</span></span><br><span class="line">    <span class="built_in">shift</span></span><br><span class="line">    <span class="built_in">exec</span> <span class="string">"<span class="variable">$_RUNJAVA</span>"</span> <span class="variable">$JAVA_OPTS</span> <span class="variable">$CATALINA_OPTS</span> \</span><br><span class="line">      -Djava.endorsed.dirs=<span class="string">"<span class="variable">$JAVA_ENDORSED_DIRS</span>"</span> -classpath <span class="string">"<span class="variable">$CLASSPATH</span>"</span> \</span><br><span class="line">      -Djava.security.manager \</span><br><span class="line">      -Djava.security.policy==<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span>/conf/catalina.policy \</span><br><span class="line">      -Dcatalina.base=<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span> \</span><br><span class="line">      -Dcatalina.home=<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span> \</span><br><span class="line">      -Djava.io.tmpdir=<span class="string">"<span class="variable">$CATALINA_TMPDIR</span>"</span> \</span><br><span class="line">      org.apache.catalina.startup.Bootstrap <span class="string">"<span class="variable">$@</span>"</span> start</span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">  <span class="comment"># 如果参数是孤单的run，则在本窗口中启动tomcat服务器</span></span><br><span class="line">  <span class="comment"># 在本窗口中启动的方法是使用exec，让当前进程fork一个新进程来启动tomcat，当前进程是tomcat的父进程</span></span><br><span class="line">  <span class="comment"># 启动tomcat的类是org.apache.catalina.startup.Bootstrap.main("start");</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">exec</span> <span class="string">"<span class="variable">$_RUNJAVA</span>"</span> <span class="variable">$JAVA_OPTS</span> <span class="variable">$CATALINA_OPTS</span> \</span><br><span class="line">      -Djava.endorsed.dirs=<span class="string">"<span class="variable">$JAVA_ENDORSED_DIRS</span>"</span> -classpath <span class="string">"<span class="variable">$CLASSPATH</span>"</span> \</span><br><span class="line">      -Dcatalina.base=<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span> \</span><br><span class="line">      -Dcatalina.home=<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span> \</span><br><span class="line">      -Djava.io.tmpdir=<span class="string">"<span class="variable">$CATALINA_TMPDIR</span>"</span> \</span><br><span class="line">      org.apache.catalina.startup.Bootstrap <span class="string">"<span class="variable">$@</span>"</span> start</span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># +----------------------------------------------------+</span></span><br><span class="line"><span class="comment"># |  ......当执行catalina.sh的参数是start的时候......  |</span></span><br><span class="line"><span class="comment"># |  在新窗口中启动tomcat服务器！！！                  |</span></span><br><span class="line"><span class="comment"># +----------------------------------------------------+</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">"start"</span> ] ; <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 把参数start去掉</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">shift</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 创建一个文件（如果文件不存在的话）$CATALINA_BASE/logs/catalina.out  </span></span><br><span class="line"></span><br><span class="line">  touch <span class="string">"<span class="variable">$CATALINA_BASE</span>"</span>/logs/catalina.out</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 如果参数是start -security，则启动Security Manager</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">"-security"</span> ] ; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Using Security Manager"</span></span><br><span class="line">    <span class="built_in">shift</span></span><br><span class="line">    <span class="string">"<span class="variable">$_RUNJAVA</span>"</span> <span class="variable">$JAVA_OPTS</span> <span class="variable">$CATALINA_OPTS</span> \</span><br><span class="line">      -Djava.endorsed.dirs=<span class="string">"<span class="variable">$JAVA_ENDORSED_DIRS</span>"</span> -classpath <span class="string">"<span class="variable">$CLASSPATH</span>"</span> \</span><br><span class="line">      -Djava.security.manager \</span><br><span class="line">      -Djava.security.policy==<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span>/conf/catalina.policy \</span><br><span class="line">      -Dcatalina.base=<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span> \</span><br><span class="line">      -Dcatalina.home=<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span> \</span><br><span class="line">      -Djava.io.tmpdir=<span class="string">"<span class="variable">$CATALINA_TMPDIR</span>"</span> \</span><br><span class="line">      org.apache.catalina.startup.Bootstrap <span class="string">"<span class="variable">$@</span>"</span> start \</span><br><span class="line">      &gt;&gt; <span class="string">"<span class="variable">$CATALINA_BASE</span>"</span>/logs/catalina.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> [ ! -z <span class="string">"<span class="variable">$CATALINA_PID</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> $! &gt; <span class="variable">$CATALINA_PID</span></span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">  <span class="comment"># 如果参数是孤单的start，那么在新窗口中启动tomcat</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    <span class="string">"<span class="variable">$_RUNJAVA</span>"</span> <span class="variable">$JAVA_OPTS</span> <span class="variable">$CATALINA_OPTS</span> \</span><br><span class="line">      -Djava.endorsed.dirs=<span class="string">"<span class="variable">$JAVA_ENDORSED_DIRS</span>"</span> -classpath <span class="string">"<span class="variable">$CLASSPATH</span>"</span> \</span><br><span class="line">      -Dcatalina.base=<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span> \</span><br><span class="line">      -Dcatalina.home=<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span> \</span><br><span class="line">      -Djava.io.tmpdir=<span class="string">"<span class="variable">$CATALINA_TMPDIR</span>"</span> \</span><br><span class="line">      org.apache.catalina.startup.Bootstrap <span class="string">"<span class="variable">$@</span>"</span> start \</span><br><span class="line">      &gt;&gt; <span class="string">"<span class="variable">$CATALINA_BASE</span>"</span>/logs/catalina.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> [ ! -z <span class="string">"<span class="variable">$CATALINA_PID</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> $! &gt; <span class="variable">$CATALINA_PID</span></span><br><span class="line">      <span class="keyword">fi</span>      </span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># +----------------------------------------------------+</span></span><br><span class="line"><span class="comment"># |  ......当执行catalina.sh的参数是stop的时候......   |</span></span><br><span class="line"><span class="comment"># |  关闭tomcat服务器！！！                            |</span></span><br><span class="line"><span class="comment"># +----------------------------------------------------+</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">"stop"</span> ] ; <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 把参数stop去掉</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">shift</span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  <span class="comment"># 关闭tomcat服务器的类是org.apache.catalina.startup.Bootstrap-&gt;main("stop");</span></span><br><span class="line">  <span class="comment"># 注意：java -D 是设置系统属性</span></span><br><span class="line">  </span><br><span class="line">  <span class="built_in">exec</span> <span class="string">"<span class="variable">$_RUNJAVA</span>"</span> <span class="variable">$JAVA_OPTS</span> <span class="variable">$CATALINA_OPTS</span> \</span><br><span class="line">    -Djava.endorsed.dirs=<span class="string">"<span class="variable">$JAVA_ENDORSED_DIRS</span>"</span> -classpath <span class="string">"<span class="variable">$CLASSPATH</span>"</span> \</span><br><span class="line">    -Dcatalina.base=<span class="string">"<span class="variable">$CATALINA_BASE</span>"</span> \</span><br><span class="line">    -Dcatalina.home=<span class="string">"<span class="variable">$CATALINA_HOME</span>"</span> \</span><br><span class="line">    -Djava.io.tmpdir=<span class="string">"<span class="variable">$CATALINA_TMPDIR</span>"</span> \</span><br><span class="line">    org.apache.catalina.startup.Bootstrap <span class="string">"<span class="variable">$@</span>"</span> stop</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># +----------------------------------------------------+</span></span><br><span class="line"><span class="comment"># |  ......当执行catalina.sh的参数不可辨认的时候...... |</span></span><br><span class="line"><span class="comment"># |  打印帮助信息，由此查看各种参数代表的意义！！！    |</span></span><br><span class="line"><span class="comment"># +----------------------------------------------------+</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"Usage: catalina.sh ( commands ... )"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"commands:"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"  debug             Start Catalina in a debugger"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"  debug -security   Debug Catalina with a security manager"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"  embedded          Start Catalina in embedded mode"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"  jpda start        Start Catalina under JPDA debugger"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"  run               Start Catalina in the current window"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"  run -security     Start in the current window with security manager"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"  start             Start Catalina in a separate window"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"  start -security   Start in a separate window with security manager"</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"  stop              Stop Catalina"</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+</div><div class="fold_hider"><div class="close hider_title"><span style="color:gray;font-size:12px">显/隐内容</span></div></div></div>
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">该脚本设置正确的环境变量和系统信息，然后启动或者停止tomcat server</span><br><span class="line">具体的操作是：</span><br><span class="line">使用命令行参数作为args的实参，调用org.apache.catalina.startup.Bootstrap.main(String[])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>server.xml</strong></li>
+</ul>
+<div style="margin-top: -20px;"><div class="fold_hider"><div class="close hider_title"><span style="color:gray;font-size:12px">显/隐内容</span></div></div><div class="fold">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;Server port=<span class="string">"6063"</span> shutdown=<span class="string">"SHUTDOWN"</span>&gt;</span><br><span class="line">  &lt;Listener className=<span class="string">"org.apache.catalina.startup.VersionLoggerListener"</span> /&gt;</span><br><span class="line">  &lt;Listener className=<span class="string">"org.apache.catalina.core.AprLifecycleListener"</span> SSLEngine=<span class="string">"on"</span> /&gt;</span><br><span class="line">  &lt;Listener className=<span class="string">"org.apache.catalina.core.JreMemoryLeakPreventionListener"</span> /&gt;</span><br><span class="line">  &lt;Listener className=<span class="string">"org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"</span> /&gt;</span><br><span class="line">  &lt;Listener className=<span class="string">"org.apache.catalina.core.ThreadLocalLeakPreventionListener"</span> /&gt;</span><br><span class="line">  &lt;GlobalNamingResources&gt;</span><br><span class="line">    &lt;Resource name=<span class="string">"UserDatabase"</span> auth=<span class="string">"Container"</span></span><br><span class="line">              <span class="built_in">type</span>=<span class="string">"org.apache.catalina.UserDatabase"</span></span><br><span class="line">              description=<span class="string">"User database that can be updated and saved"</span></span><br><span class="line">              factory=<span class="string">"org.apache.catalina.users.MemoryUserDatabaseFactory"</span></span><br><span class="line">              pathname=<span class="string">"conf/tomcat-users.xml"</span> /&gt;</span><br><span class="line">  &lt;/GlobalNamingResources&gt;</span><br><span class="line">  &lt;Service name=<span class="string">"Catalina"</span>&gt;</span><br><span class="line">    &lt;Connector port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span></span><br><span class="line">               connectionTimeout=<span class="string">"30000"</span> </span><br><span class="line">               redirectPort=<span class="string">"6064"</span></span><br><span class="line">               maxHttpHeaderSize=<span class="string">"8192"</span></span><br><span class="line">               acceptCount=<span class="string">"1000"</span></span><br><span class="line">               enableLookups=<span class="string">"false"</span></span><br><span class="line">               maxKeepAliveRequests=<span class="string">"10"</span></span><br><span class="line">               keepAliveTimeout=<span class="string">"30000"</span></span><br><span class="line">               socketBuffer=<span class="string">"4096"</span></span><br><span class="line">               server=<span class="string">"Fonsview Server v2.0"</span>/&gt;</span><br><span class="line">    &lt;Engine name=<span class="string">"Catalina"</span> defaultHost=<span class="string">"localhost"</span>&gt;</span><br><span class="line">      &lt;Realm className=<span class="string">"org.apache.catalina.realm.LockOutRealm"</span>&gt;</span><br><span class="line">        &lt;Realm className=<span class="string">"org.apache.catalina.realm.UserDatabaseRealm"</span></span><br><span class="line">               resourceName=<span class="string">"UserDatabase"</span>/&gt;</span><br><span class="line">      &lt;/Realm&gt;</span><br><span class="line">      &lt;Host name=<span class="string">"localhost"</span>  appBase=<span class="string">""</span></span><br><span class="line">            unpackWARs=<span class="string">"true"</span> autoDeploy=<span class="string">"true"</span>&gt;</span><br><span class="line">            &lt;Context docBase=<span class="string">"webapps/test"</span> path=<span class="string">""</span>  reloadable=<span class="string">"false"</span> /&gt;</span><br><span class="line">      &lt;/Host&gt;</span><br><span class="line">    &lt;/Engine&gt;</span><br><span class="line">  &lt;/Service&gt;</span><br><span class="line">  &lt;!-- 多个项目启动，可添加多个service --&gt;</span><br><span class="line">  &lt;Service name=<span class="string">"Catalina"</span>&gt;</span><br><span class="line">    &lt;Connector port=<span class="string">"8081"</span> protocol=<span class="string">"HTTP/1.1"</span></span><br><span class="line">               connectionTimeout=<span class="string">"30000"</span> </span><br><span class="line">               redirectPort=<span class="string">"6064"</span></span><br><span class="line">               maxHttpHeaderSize=<span class="string">"8192"</span></span><br><span class="line">               acceptCount=<span class="string">"1000"</span></span><br><span class="line">               enableLookups=<span class="string">"false"</span></span><br><span class="line">               maxKeepAliveRequests=<span class="string">"10"</span></span><br><span class="line">               keepAliveTimeout=<span class="string">"30000"</span></span><br><span class="line">               socketBuffer=<span class="string">"4096"</span></span><br><span class="line">               server=<span class="string">"Fonsview Server v2.0"</span>/&gt;</span><br><span class="line">    &lt;Engine name=<span class="string">"Catalina"</span> defaultHost=<span class="string">"localhost"</span>&gt;</span><br><span class="line">      &lt;Realm className=<span class="string">"org.apache.catalina.realm.LockOutRealm"</span>&gt;</span><br><span class="line">        &lt;Realm className=<span class="string">"org.apache.catalina.realm.UserDatabaseRealm"</span></span><br><span class="line">               resourceName=<span class="string">"UserDatabase"</span>/&gt;</span><br><span class="line">      &lt;/Realm&gt;</span><br><span class="line">      &lt;Host name=<span class="string">"localhost"</span>  appBase=<span class="string">""</span></span><br><span class="line">            unpackWARs=<span class="string">"true"</span> autoDeploy=<span class="string">"true"</span>&gt;</span><br><span class="line">            &lt;Context docBase=<span class="string">"webapps/test1"</span> path=<span class="string">""</span>  reloadable=<span class="string">"false"</span> /&gt;</span><br><span class="line">      &lt;/Host&gt;</span><br><span class="line">    &lt;/Engine&gt;</span><br><span class="line">  &lt;/Service&gt;</span><br><span class="line">&lt;/Server&gt;</span><br></pre></td></tr></table></figure>
+
+</div><div class="fold_hider"><div class="close hider_title"><span style="color:gray;font-size:12px">显/隐内容</span></div></div></div>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">执行顺序:server-&gt;service-&gt;connector-&gt;engine-&gt;host-&gt;context（xml解析）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>BootStrap</li>
+</ul>
+<div style="margin-top: -20px;"><div class="fold_hider"><div class="close hider_title"><span style="color:gray;font-size:12px">显/隐内容</span></div></div><div class="fold">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br></pre></td><td class="code"><pre><span class="line">   // Decompiled by Jad v1.5.8e2. Copyright 2001 Pavel Kouznetsov.</span><br><span class="line">// Jad home page: http://kpdus.tripod.com/jad.html</span><br><span class="line">// Decompiler options: packimports(3) fieldsfirst ansi space </span><br><span class="line">// Source File Name:   Bootstrap.java</span><br><span class="line"></span><br><span class="line">package org.apache.catalina.startup;</span><br><span class="line"></span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.lang.reflect.*;</span><br><span class="line">import java.net.MalformedURLException;</span><br><span class="line">import java.net.URL;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.regex.Matcher;</span><br><span class="line">import java.util.regex.Pattern;</span><br><span class="line">import org.apache.catalina.security.SecurityClassLoad;</span><br><span class="line">import org.apache.juli.logging.Log;</span><br><span class="line">import org.apache.juli.logging.LogFactory;</span><br><span class="line"></span><br><span class="line">// Referenced classes of package org.apache.catalina.startup:</span><br><span class="line">//			CatalinaProperties, ClassLoaderFactory</span><br><span class="line"></span><br><span class="line">public final class Bootstrap</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	private static final Log <span class="built_in">log</span> = LogFactory.getLog(org/apache/catalina/startup/Bootstrap);</span><br><span class="line">	private static Bootstrap daemon = null;</span><br><span class="line">	private static final File catalinaBaseFile;</span><br><span class="line">	private static final File catalinaHomeFile;</span><br><span class="line">	private static final Pattern PATH_PATTERN = Pattern.compile(<span class="string">"(\".*?\")|(([^,])*)"</span>);</span><br><span class="line">	private Object catalinaDaemon;</span><br><span class="line">	ClassLoader commonLoader;</span><br><span class="line">	ClassLoader catalinaLoader;</span><br><span class="line">	ClassLoader sharedLoader;</span><br><span class="line"></span><br><span class="line">	public Bootstrap()</span><br><span class="line">	&#123;</span><br><span class="line">		catalinaDaemon = null;</span><br><span class="line">		commonLoader = null;</span><br><span class="line">		catalinaLoader = null;</span><br><span class="line">		sharedLoader = null;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private void initClassLoaders()</span><br><span class="line">	&#123;</span><br><span class="line">		try</span><br><span class="line">		&#123;</span><br><span class="line">			commonLoader = createClassLoader(<span class="string">"common"</span>, null);</span><br><span class="line">			<span class="keyword">if</span> (commonLoader == null)</span><br><span class="line">				commonLoader = getClass().getClassLoader();</span><br><span class="line">			catalinaLoader = createClassLoader(<span class="string">"server"</span>, commonLoader);</span><br><span class="line">			sharedLoader = createClassLoader(<span class="string">"shared"</span>, commonLoader);</span><br><span class="line">		&#125;</span><br><span class="line">		catch (Throwable t)</span><br><span class="line">		&#123;</span><br><span class="line">			handleThrowable(t);</span><br><span class="line">			log.error(<span class="string">"Class loader creation threw exception"</span>, t);</span><br><span class="line">			System.exit(1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private ClassLoader createClassLoader(String name, ClassLoader parent)</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		String value = CatalinaProperties.getProperty((new StringBuilder()).append(name).append(<span class="string">".loader"</span>).toString());</span><br><span class="line">		<span class="keyword">if</span> (value == null || value.equals(<span class="string">""</span>))</span><br><span class="line">			<span class="built_in">return</span> parent;</span><br><span class="line">		value = replace(value);</span><br><span class="line">		List repositories = new ArrayList();</span><br><span class="line">		String repositoryPaths[] = getPaths(value);</span><br><span class="line">		String arr$[] = repositoryPaths;</span><br><span class="line">		int len$ = arr$.length;</span><br><span class="line">		<span class="keyword">for</span> (int i$ = 0; i$ &lt; len$; i$++)</span><br><span class="line">		&#123;</span><br><span class="line">			String repository = arr$[i$];</span><br><span class="line">			try</span><br><span class="line">			&#123;</span><br><span class="line">				URL url = new URL(repository);</span><br><span class="line">				repositories.add(new ClassLoaderFactory.Repository(repository, org.apache.catalina.startup.ClassLoaderFactory.RepositoryType.URL));</span><br><span class="line">				<span class="built_in">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			catch (MalformedURLException malformedurlexception) &#123; &#125;</span><br><span class="line">			<span class="keyword">if</span> (repository.endsWith(<span class="string">"*.jar"</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				repository = repository.substring(0, repository.length() - <span class="string">"*.jar"</span>.length());</span><br><span class="line">				repositories.add(new ClassLoaderFactory.Repository(repository, ClassLoaderFactory.RepositoryType.GLOB));</span><br><span class="line">				<span class="built_in">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (repository.endsWith(<span class="string">".jar"</span>))</span><br><span class="line">				repositories.add(new ClassLoaderFactory.Repository(repository, ClassLoaderFactory.RepositoryType.JAR));</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				repositories.add(new ClassLoaderFactory.Repository(repository, ClassLoaderFactory.RepositoryType.DIR));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">return</span> ClassLoaderFactory.createClassLoader(repositories, parent);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected String replace(String str)</span><br><span class="line">	&#123;</span><br><span class="line">		String result = str;</span><br><span class="line">		int pos_start = str.indexOf(<span class="string">"$&#123;"</span>);</span><br><span class="line">		<span class="keyword">if</span> (pos_start &gt;= 0)</span><br><span class="line">		&#123;</span><br><span class="line">			StringBuilder builder = new StringBuilder();</span><br><span class="line">			int pos_end = -1;</span><br><span class="line">			<span class="keyword">for</span> (; pos_start &gt;= 0; pos_start = str.indexOf(<span class="string">"$&#123;"</span>, pos_end + 1))</span><br><span class="line">			&#123;</span><br><span class="line">				builder.append(str, pos_end + 1, pos_start);</span><br><span class="line">				pos_end = str.indexOf(<span class="string">'&#125;'</span>, pos_start + 2);</span><br><span class="line">				<span class="keyword">if</span> (pos_end &lt; 0)</span><br><span class="line">				&#123;</span><br><span class="line">					pos_end = pos_start - 1;</span><br><span class="line">					<span class="built_in">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				String propName = str.substring(pos_start + 2, pos_end);</span><br><span class="line">				String replacement;</span><br><span class="line">				<span class="keyword">if</span> (propName.length() == 0)</span><br><span class="line">					replacement = null;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">if</span> (<span class="string">"catalina.home"</span>.equals(propName))</span><br><span class="line">					replacement = getCatalinaHome();</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">if</span> (<span class="string">"catalina.base"</span>.equals(propName))</span><br><span class="line">					replacement = getCatalinaBase();</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					replacement = System.getProperty(propName);</span><br><span class="line">				<span class="keyword">if</span> (replacement != null)</span><br><span class="line">					builder.append(replacement);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					builder.append(str, pos_start, pos_end + 1);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			builder.append(str, pos_end + 1, str.length());</span><br><span class="line">			result = builder.toString();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void init()</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		initClassLoaders();</span><br><span class="line">		Thread.currentThread().setContextClassLoader(catalinaLoader);</span><br><span class="line">		SecurityClassLoad.securityClassLoad(catalinaLoader);</span><br><span class="line">		<span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">			log.debug(<span class="string">"Loading startup class"</span>);</span><br><span class="line">		Class startupClass = catalinaLoader.loadClass(<span class="string">"org.apache.catalina.startup.Catalina"</span>);</span><br><span class="line">		Object startupInstance = startupClass.getConstructor(new Class[0]).newInstance(new Object[0]);</span><br><span class="line">		<span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">			log.debug(<span class="string">"Setting startup class properties"</span>);</span><br><span class="line">		String methodName = <span class="string">"setParentClassLoader"</span>;</span><br><span class="line">		Class paramTypes[] = new Class[1];</span><br><span class="line">		paramTypes[0] = Class.forName(<span class="string">"java.lang.ClassLoader"</span>);</span><br><span class="line">		Object paramValues[] = new Object[1];</span><br><span class="line">		paramValues[0] = sharedLoader;</span><br><span class="line">		Method method = startupInstance.getClass().getMethod(methodName, paramTypes);</span><br><span class="line">		method.invoke(startupInstance, paramValues);</span><br><span class="line">		catalinaDaemon = startupInstance;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private void load(String arguments[])</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		String methodName = <span class="string">"load"</span>;</span><br><span class="line">		Object param[];</span><br><span class="line">		Class paramTypes[];</span><br><span class="line">		<span class="keyword">if</span> (arguments == null || arguments.length == 0)</span><br><span class="line">		&#123;</span><br><span class="line">			paramTypes = null;</span><br><span class="line">			param = null;</span><br><span class="line">		&#125; <span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			paramTypes = new Class[1];</span><br><span class="line">			paramTypes[0] = arguments.getClass();</span><br><span class="line">			param = new Object[1];</span><br><span class="line">			param[0] = arguments;</span><br><span class="line">		&#125;</span><br><span class="line">		Method method = catalinaDaemon.getClass().getMethod(methodName, paramTypes);</span><br><span class="line">		<span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">			log.debug((new StringBuilder()).append(<span class="string">"Calling startup class "</span>).append(method).toString());</span><br><span class="line">		method.invoke(catalinaDaemon, param);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private Object getServer()</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		String methodName = <span class="string">"getServer"</span>;</span><br><span class="line">		Method method = catalinaDaemon.getClass().getMethod(methodName, new Class[0]);</span><br><span class="line">		<span class="built_in">return</span> method.invoke(catalinaDaemon, new Object[0]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void init(String arguments[])</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		init();</span><br><span class="line">		load(arguments);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void start()</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (catalinaDaemon == null)</span><br><span class="line">			init();</span><br><span class="line">		Method method = catalinaDaemon.getClass().getMethod(<span class="string">"start"</span>, (Class[])null);</span><br><span class="line">		method.invoke(catalinaDaemon, (Object[])null);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void stop()</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		Method method = catalinaDaemon.getClass().getMethod(<span class="string">"stop"</span>, (Class[])null);</span><br><span class="line">		method.invoke(catalinaDaemon, (Object[])null);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void stopServer()</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		Method method = catalinaDaemon.getClass().getMethod(<span class="string">"stopServer"</span>, (Class[])null);</span><br><span class="line">		method.invoke(catalinaDaemon, (Object[])null);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void stopServer(String arguments[])</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		Object param[];</span><br><span class="line">		Class paramTypes[];</span><br><span class="line">		<span class="keyword">if</span> (arguments == null || arguments.length == 0)</span><br><span class="line">		&#123;</span><br><span class="line">			paramTypes = null;</span><br><span class="line">			param = null;</span><br><span class="line">		&#125; <span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			paramTypes = new Class[1];</span><br><span class="line">			paramTypes[0] = arguments.getClass();</span><br><span class="line">			param = new Object[1];</span><br><span class="line">			param[0] = arguments;</span><br><span class="line">		&#125;</span><br><span class="line">		Method method = catalinaDaemon.getClass().getMethod(<span class="string">"stopServer"</span>, paramTypes);</span><br><span class="line">		method.invoke(catalinaDaemon, param);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setAwait(boolean await)</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		Class paramTypes[] = new Class[1];</span><br><span class="line">		paramTypes[0] = Boolean.TYPE;</span><br><span class="line">		Object paramValues[] = new Object[1];</span><br><span class="line">		paramValues[0] = Boolean.valueOf(await);</span><br><span class="line">		Method method = catalinaDaemon.getClass().getMethod(<span class="string">"setAwait"</span>, paramTypes);</span><br><span class="line">		method.invoke(catalinaDaemon, paramValues);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public boolean getAwait()</span><br><span class="line">		throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		Class paramTypes[] = new Class[0];</span><br><span class="line">		Object paramValues[] = new Object[0];</span><br><span class="line">		Method method = catalinaDaemon.getClass().getMethod(<span class="string">"getAwait"</span>, paramTypes);</span><br><span class="line">		Boolean b = (Boolean)method.invoke(catalinaDaemon, paramValues);</span><br><span class="line">		<span class="built_in">return</span> b.booleanValue();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void destroy()</span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static void main(String args[])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (daemon == null)</span><br><span class="line">		&#123;</span><br><span class="line">			Bootstrap bootstrap = new Bootstrap();</span><br><span class="line">			try</span><br><span class="line">			&#123;</span><br><span class="line">				bootstrap.init();</span><br><span class="line">			&#125;</span><br><span class="line">			catch (Throwable t)</span><br><span class="line">			&#123;</span><br><span class="line">				handleThrowable(t);</span><br><span class="line">				t.printStackTrace();</span><br><span class="line">				<span class="built_in">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			daemon = bootstrap;</span><br><span class="line">		&#125; <span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			Thread.currentThread().setContextClassLoader(daemon.catalinaLoader);</span><br><span class="line">		&#125;</span><br><span class="line">		try</span><br><span class="line">		&#123;</span><br><span class="line">			String <span class="built_in">command</span> = <span class="string">"start"</span>;</span><br><span class="line">			<span class="keyword">if</span> (args.length &gt; 0)</span><br><span class="line">				<span class="built_in">command</span> = args[args.length - 1];</span><br><span class="line">			<span class="keyword">if</span> (command.equals(<span class="string">"startd"</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				args[args.length - 1] = <span class="string">"start"</span>;</span><br><span class="line">				daemon.load(args);</span><br><span class="line">				daemon.start();</span><br><span class="line">			&#125; <span class="keyword">else</span></span><br><span class="line">			<span class="keyword">if</span> (command.equals(<span class="string">"stopd"</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				args[args.length - 1] = <span class="string">"stop"</span>;</span><br><span class="line">				daemon.stop();</span><br><span class="line">			&#125; <span class="keyword">else</span></span><br><span class="line">			<span class="keyword">if</span> (command.equals(<span class="string">"start"</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				daemon.setAwait(<span class="literal">true</span>);</span><br><span class="line">				daemon.load(args);</span><br><span class="line">				daemon.start();</span><br><span class="line">				<span class="keyword">if</span> (null == daemon.getServer())</span><br><span class="line">					System.exit(1);</span><br><span class="line">			&#125; <span class="keyword">else</span></span><br><span class="line">			<span class="keyword">if</span> (command.equals(<span class="string">"stop"</span>))</span><br><span class="line">				daemon.stopServer(args);</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">if</span> (command.equals(<span class="string">"configtest"</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				daemon.load(args);</span><br><span class="line">				<span class="keyword">if</span> (null == daemon.getServer())</span><br><span class="line">					System.exit(1);</span><br><span class="line">				System.exit(0);</span><br><span class="line">			&#125; <span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				log.warn((new StringBuilder()).append(<span class="string">"Bootstrap: command \""</span>).append(<span class="built_in">command</span>).append(<span class="string">"\" does not exist."</span>).toString());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		catch (Throwable t)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> ((t instanceof InvocationTargetException) &amp;&amp; t.getCause() != null)</span><br><span class="line">				t = t.getCause();</span><br><span class="line">			handleThrowable(t);</span><br><span class="line">			t.printStackTrace();</span><br><span class="line">			System.exit(1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static String getCatalinaHome()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> catalinaHomeFile.getPath();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static String getCatalinaBase()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> catalinaBaseFile.getPath();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static File getCatalinaHomeFile()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> catalinaHomeFile;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static File getCatalinaBaseFile()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> catalinaBaseFile;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static void handleThrowable(Throwable t)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (t instanceof ThreadDeath)</span><br><span class="line">			throw (ThreadDeath)t;</span><br><span class="line">		<span class="keyword">if</span> (t instanceof VirtualMachineError)</span><br><span class="line">			throw (VirtualMachineError)t;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="built_in">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	protected static String[] getPaths(String value)</span><br><span class="line">	&#123;</span><br><span class="line">		List result = new ArrayList();</span><br><span class="line">		Matcher matcher = PATH_PATTERN.matcher(value);</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (!matcher.find())</span><br><span class="line">				<span class="built_in">break</span>;</span><br><span class="line">			String path = value.substring(matcher.start(), matcher.end());</span><br><span class="line">			path = path.trim();</span><br><span class="line">			<span class="keyword">if</span> (path.length() == 0)</span><br><span class="line">				<span class="built_in">continue</span>;</span><br><span class="line">			char first = path.charAt(0);</span><br><span class="line">			char last = path.charAt(path.length() - 1);</span><br><span class="line">			<span class="keyword">if</span> (first == <span class="string">'"'</span> &amp;&amp; last == <span class="string">'"'</span> &amp;&amp; path.length() &gt; 1)</span><br><span class="line">			&#123;</span><br><span class="line">				path = path.substring(1, path.length() - 1);</span><br><span class="line">				path = path.trim();</span><br><span class="line">				<span class="keyword">if</span> (path.length() == 0)</span><br><span class="line">					<span class="built_in">continue</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span></span><br><span class="line">			<span class="keyword">if</span> (path.contains(<span class="string">"\""</span>))</span><br><span class="line">				throw new IllegalArgumentException((new StringBuilder()).append(<span class="string">"The double quote [\"] character only be used to quote paths. It must not appear in a path. This loader path is not valid: ["</span>).append(value).append(<span class="string">"]"</span>).toString());</span><br><span class="line">			result.add(path);</span><br><span class="line">		&#125; <span class="keyword">while</span> (<span class="literal">true</span>);</span><br><span class="line">		<span class="built_in">return</span> (String[])result.toArray(new String[result.size()]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	static </span><br><span class="line">	&#123;</span><br><span class="line">		String userDir = System.getProperty(<span class="string">"user.dir"</span>);</span><br><span class="line">		String home = System.getProperty(<span class="string">"catalina.home"</span>);</span><br><span class="line">		File homeFile = null;</span><br><span class="line">		<span class="keyword">if</span> (home != null)</span><br><span class="line">		&#123;</span><br><span class="line">			File f = new File(home);</span><br><span class="line">			try</span><br><span class="line">			&#123;</span><br><span class="line">				homeFile = f.getCanonicalFile();</span><br><span class="line">			&#125;</span><br><span class="line">			catch (IOException ioe)</span><br><span class="line">			&#123;</span><br><span class="line">				homeFile = f.getAbsoluteFile();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (homeFile == null)</span><br><span class="line">		&#123;</span><br><span class="line">			File bootstrapJar = new File(userDir, <span class="string">"bootstrap.jar"</span>);</span><br><span class="line">			<span class="keyword">if</span> (bootstrapJar.exists())</span><br><span class="line">			&#123;</span><br><span class="line">				File f = new File(userDir, <span class="string">".."</span>);</span><br><span class="line">				try</span><br><span class="line">				&#123;</span><br><span class="line">					homeFile = f.getCanonicalFile();</span><br><span class="line">				&#125;</span><br><span class="line">				catch (IOException ioe)</span><br><span class="line">				&#123;</span><br><span class="line">					homeFile = f.getAbsoluteFile();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (homeFile == null)</span><br><span class="line">		&#123;</span><br><span class="line">			File f = new File(userDir);</span><br><span class="line">			try</span><br><span class="line">			&#123;</span><br><span class="line">				homeFile = f.getCanonicalFile();</span><br><span class="line">			&#125;</span><br><span class="line">			catch (IOException ioe)</span><br><span class="line">			&#123;</span><br><span class="line">				homeFile = f.getAbsoluteFile();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		catalinaHomeFile = homeFile;</span><br><span class="line">		System.setProperty(<span class="string">"catalina.home"</span>, catalinaHomeFile.getPath());</span><br><span class="line">		String base = System.getProperty(<span class="string">"catalina.base"</span>);</span><br><span class="line">		<span class="keyword">if</span> (base == null)</span><br><span class="line">		&#123;</span><br><span class="line">			catalinaBaseFile = catalinaHomeFile;</span><br><span class="line">		&#125; <span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			File baseFile = new File(base);</span><br><span class="line">			try</span><br><span class="line">			&#123;</span><br><span class="line">				baseFile = baseFile.getCanonicalFile();</span><br><span class="line">			&#125;</span><br><span class="line">			catch (IOException ioe)</span><br><span class="line">			&#123;</span><br><span class="line">				baseFile = baseFile.getAbsoluteFile();</span><br><span class="line">			&#125;</span><br><span class="line">			catalinaBaseFile = baseFile;</span><br><span class="line">		&#125;</span><br><span class="line">		System.setProperty(<span class="string">"catalina.base"</span>, catalinaBaseFile.getPath());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</div><div class="fold_hider"><div class="close hider_title"><span style="color:gray;font-size:12px">显/隐内容</span></div></div></div>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bootstrap的main方法是tomcat的入口，位于tomcat的bin目录的bootstrap.jar,main方法的执行过程如下图：</span><br></pre></td></tr></table></figure>
+
+<img src="/images/BootstrapMain.png">
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">main方法作用是启动catalina.java，然后catalina.java启动server</span><br></pre></td></tr></table></figure>
+
+<img src="/images/Bootstrap.png">
+
+<ul>
+<li>深入分析javaweb技术内幕（tomcat篇）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tomcat的总体结构如图所示：</span><br></pre></td></tr></table></figure>
+
+<img src="/images/tomcat_project.png">
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server负责Tomcat的整个生命周期</span><br><span class="line">Service将Connector和Container组装为一个整体</span><br><span class="line">Connector负责和外部进行通讯，Connector用于接受请求并将请求封装成Request和Response，然后交给Container进行处理，Container处理完之后再交给Connector返回给客户端。</span><br><span class="line">Container负责处理内部事务,在tomcat中，容器(Container)分4种，Engine、Host、Context和Wrapper。Engine是容器的入口，Host是虚拟主机，Context是应用服务，Wrapper为具体的Servlet</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tomcat执行过程如下（看不清楚可以右键查看图像，可以放大）：</span><br></pre></td></tr></table></figure>
+
+<img src="/images/TomcatProcess.png">
+
+
+<h2 id="tomcat处理请求"><a href="#tomcat处理请求" class="headerlink" title="tomcat处理请求"></a>tomcat处理请求</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Tomcat处理一个http请求的过程,按照server.xml的结构一层层解析</span><br><span class="line">浏览器 -&gt; http请求 -&gt; connector -&gt; request对象 -&gt; engine -&gt; host -&gt; context -&gt; servlet -&gt; host -&gt; engine -&gt; connector -&gt; response对象 -&gt; 浏览器</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">假设来自客户的请求为：http://localhost:8080/wsota/wsota_index.jsp</span><br><span class="line">1) 请求被发送到本机端口8080，被在那里侦听的Coyote HTTP/1.1 Connector获得</span><br><span class="line">   1.1）Connector的主要任务是负责接收浏览器的发过来的 tcp 连接请求，创建一个 Request 和 Response 对象分别用于和请求端交换数据，然后会产生一个线程来处理这个请求并把产生的 Request 和 Response 对象传给处理这个请求的线程</span><br><span class="line">2) Connector把该请求交给它所在的Service的Engine来处理，并等待来自Engine的回应</span><br><span class="line">3) Engine获得请求localhost/wsota/wsota_index.jsp，匹配它所拥有的所有虚拟主机Host</span><br><span class="line">4) Engine匹配到名为localhost的Host（即使匹配不到也把请求交给该Host处理，因为该Host被定义为该Engine的默认主机）</span><br><span class="line">5) localhost Host获得请求/wsota/wsota_index.jsp，匹配它所拥有的所有Context</span><br><span class="line">6) Host匹配到路径为/wsota的Context（如果匹配不到就把该请求交给路径名为“”的Context去处理）</span><br><span class="line">7) path=”/wsota”的Context获得请求/wsota_index.jsp，在它的mapping table中寻找对应的servlet</span><br><span class="line">8) Context匹配到URL PATTERN为*.jsp的servlet，对应于JspServlet类</span><br><span class="line">9) 构造HttpServletRequest对象和HttpServletResponse对象，作为参数调用JspServlet的doGet或doPost方法</span><br><span class="line">10)Context把执行完了之后的HttpServletResponse对象返回给Host</span><br><span class="line">11)Host把HttpServletResponse对象返回给Engine</span><br><span class="line">12)Engine把HttpServletResponse对象返回给Connector</span><br><span class="line">13)Connector把HttpServletResponse对象返回给客户browser</span><br></pre></td></tr></table></figure>
+
+<p>#<a href="https://www.cnblogs.com/huzhiwei/archive/2012/03/13/2393393.html" target="_blank" rel="noopener">catalina.sh参考</a></p>
+<p>#<a href="https://www.jianshu.com/p/3059328cd661" target="_blank" rel="noopener">connector参考</a></p>
+<p>#<a href="https://www.jianshu.com/p/1a2d2f868143" target="_blank" rel="noopener">container参考</a></p>
+<p>#<a href="https://www.cnblogs.com/mw91816/articles/10068853.html" target="_blank" rel="noopener">tomcat处理请求参考</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------　　　　本文结束　<i class="fa fa-heart"></i>　感谢您的阅读　　　　-------------</div>
+    
+</div>
+
+	  
+    </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tomcat/" rel="tag"># tomcat</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/03/网站创建/" rel="next" title="网站创建">
+                <i class="fa fa-chevron-left"></i> 网站创建
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/04/网站优化/" rel="prev" title="网站优化">
+                网站优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/touxiang.png" alt="喂不饱的猪">
+            
+              <p class="site-author-name" itemprop="name">喂不饱的猪</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/pigsfed" title="GitHub &rarr; https://github.com/pigsfed" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                个人推荐
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="http://www.alloyteam.com/nav/" rel="noopener" target="_blank">前端</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.chuangzaoshi.com/code" title="http://www.chuangzaoshi.com/code" rel="noopener" target="_blank">创造狮</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://e.xitu.io/" title="http://e.xitu.io/" rel="noopener" target="_blank">掘金酱</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.v2ex.com/" title="https://www.v2ex.com/" rel="noopener" target="_blank">V2EX</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=35288984&auto=1&height=66"></iframe>
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TOMCAT"><span class="nav-number">1.</span> <span class="nav-text">TOMCAT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat结构"><span class="nav-number">1.1.</span> <span class="nav-text">tomcat结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat处理请求"><span class="nav-number">1.2.</span> <span class="nav-text">tomcat处理请求</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共5.5k字</span>
+</div>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">喂不饱的猪</span>
+
+  
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+
+-->
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+<script type="text/javascript" src="/custom/post-details.js?v=7.1.1"></script>
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"left","width":75,"height":100},"mobile":{"show":true},"log":false});</script></body>
+</html>
