@@ -123,21 +123,21 @@
 <meta name="keywords" content="后端基础设施">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微服务">
-<meta property="og:url" content="https://gitee.com/Pigsfed/Pigsfed.github.io/2019/06/18/微服务/微服务/index.html">
+<meta property="og:url" content="http://github.com/Pigsfed/Pigsfed.github.io/2019/06/18/微服务/微服务/index.html">
 <meta property="og:site_name" content="Pigsfed">
 <meta property="og:description" content="微服务（转载） 翻译自 Martin Fowler 网站 Microservices  一文。文章篇幅较长，阅读需要一点耐心。 本人水平有限，若有不妥之处，还请各位帮忙指正，谢谢。  过去几年中出现了“微服务架构”这一术语，它描述了将软件应用程序设计为若干个可独立部署的服务套件的特定方法。尽管这种架构风格尚未有精确的定义，但围绕业务能力、自动部署、端点智能以及语言和数据的分散控制等组织来说，它们还">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://gitee.com/images/sketch.png">
-<meta property="og:image" content="https://gitee.com/images/conways-law.png">
-<meta property="og:image" content="https://gitee.com/images/PreferFunctionalStaffOrganization.png">
-<meta property="og:image" content="https://gitee.com/images/decentralised-data.png">
-<meta property="og:image" content="https://gitee.com/images/basic-pipeline.png">
-<meta property="og:image" content="https://gitee.com/images/micro-deployment.png">
+<meta property="og:image" content="http://github.com/images/sketch.png">
+<meta property="og:image" content="http://github.com/images/conways-law.png">
+<meta property="og:image" content="http://github.com/images/PreferFunctionalStaffOrganization.png">
+<meta property="og:image" content="http://github.com/images/decentralised-data.png">
+<meta property="og:image" content="http://github.com/images/basic-pipeline.png">
+<meta property="og:image" content="http://github.com/images/micro-deployment.png">
 <meta property="og:updated_time" content="2019-12-19T07:44:46.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微服务">
 <meta name="twitter:description" content="微服务（转载） 翻译自 Martin Fowler 网站 Microservices  一文。文章篇幅较长，阅读需要一点耐心。 本人水平有限，若有不妥之处，还请各位帮忙指正，谢谢。  过去几年中出现了“微服务架构”这一术语，它描述了将软件应用程序设计为若干个可独立部署的服务套件的特定方法。尽管这种架构风格尚未有精确的定义，但围绕业务能力、自动部署、端点智能以及语言和数据的分散控制等组织来说，它们还">
-<meta name="twitter:image" content="https://gitee.com/images/sketch.png">
+<meta name="twitter:image" content="http://github.com/images/sketch.png">
 
 
 
@@ -145,7 +145,7 @@
 
   
   
-  <link rel="canonical" href="https://gitee.com/Pigsfed/Pigsfed.github.io/2019/06/18/微服务/微服务/">
+  <link rel="canonical" href="http://github.com/Pigsfed/Pigsfed.github.io/2019/06/18/微服务/微服务/">
 
 
 
@@ -375,7 +375,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://gitee.com/Pigsfed/Pigsfed.github.io/2019/06/18/微服务/微服务/">
+    <link itemprop="mainEntityOfPage" href="http://github.com/Pigsfed/Pigsfed.github.io/2019/06/18/微服务/微服务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="喂不饱的猪">
@@ -570,7 +570,7 @@
 <p>一个单块应用程序可以非常愉快地通过这些环境构建、测试和推动。事实证明，一旦你为单体投入了自动化整体生产，那么部署更多的应用程序似乎不再那么可怕了。请记住，持续交付的目标之一就是让“部署”工作变得“枯燥”，所以无论是一个还是三个应用程序，只要部署工作依旧很“枯燥”，那么就没什么可担心的了[12]。</p>
 <p>我们看到团队大量的基础设施自动化的另一个领域是在管理生产环境中的微服务。与我们上面的断言（只要部署很无聊）相比，单块和微服务之间没有太大的区别，但是每个部署的运行环境可能会截然不同。</p>
 <p><img src="/images/micro-deployment.png" alt="micro-deployment"></p>
-<h3 id="设计时为故障做好准备"><a href="#设计时为故障做好准备" class="headerlink" title="设计时为故障做好准备"></a>设计时为故障做好准备</h3><p>使用服务作为组件的结果是，需要设计应用程序以便它们能够容忍服务的失败。如果服务提供者商不可用，任何服务呼叫都可能失败，客户必须尽可能优雅地对此做出响应。与单片设计相比，这是一个缺点，因为它这会引入额外的复杂性来处理它。结果是微服务团队不断反思服务失败是如何影响用户体验的。Netflix 的 <a href="https://github.com/Netflix/SimianArmy" target="_blank" rel="noopener">Simian Army</a> 能够引发服务甚至数据中心的故障在工作日发生故障，从而来测试应用程序的弹性和监控能力。</p>
+<h3 id="设计时为故障做好准备"><a href="#设计时为故障做好准备" class="headerlink" title="设计时为故障做好准备"></a>设计时为故障做好准备</h3><p>使用服务作为组件的结果是，需要设计应用程序以便它们能够容忍服务的失败。如果服务提供者商不可用，任何服务呼叫都可能失败，客户必须尽可能优雅地对此做出响应。与单片设计相比，这是一个缺点，因为它这会引入额外的复杂性来处理它。结果是微服务团队不断反思服务失败是如何影响用户体验的。Netflix 的 <a href="https://github.com/Netflix/SimianArmy">Simian Army</a> 能够引发服务甚至数据中心的故障在工作日发生故障，从而来测试应用程序的弹性和监控能力。</p>
 <p>生产中的这种自动化测试足以让大多数运维团队兴奋得浑身颤栗，就像在一周的长假即将到来前一样。这并不是说单块架构风格不能构建先进的监控系统——只是根据我们的经验，这在单块系统中并不常见罢了。</p>
 <p>由于服务可能随时发生故障，因此能够快速检测故障并在可能的情况下自动恢复服务就显得至关重要。微服务应用程序非常重视应用程序的实时监控，比如检查架构元素（数据库每秒获得多少请求）和业务相关度量（例如每分钟收到多少订单）。语义监控可以提供出现问题的早期预警系统，从而触发开发团队跟进和调查。</p>
 <p>这对于微服务架构来说尤为重要，因为微服务偏好编排和事件写作，这会导致一些紧急状况。虽然许多权威人士对于偶然事件的价值持积极态度，但事实是，“突发行为”有时可能是一件坏事。监控至关重要，它能够快速发现不良紧急行为并进行修复。</p>
@@ -893,7 +893,7 @@
                   
                     
                   
-                  <a href="https://github.com/pigsfed" title="GitHub &rarr; https://github.com/pigsfed" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/pigsfed" title="GitHub &rarr; https://github.com/pigsfed"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
             </div>
